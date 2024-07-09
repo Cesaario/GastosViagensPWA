@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gastos de viagens</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1>Gestão de despesas em viagens</h1>
+    <div class="container">
+        <div class="input">
+            <input id="inputDescricao" placeholder="Descrição dos itens">
+            <input id="inputQuantidade" placeholder="Quantidade" type="number" min="1" step="1">
+            <input id="inputValor" placeholder="Valor" type="number" min="0" step="any">
+            <div>
+                <select id="inputMoedaDe">
+                    <option value="BRL">BRL</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                </select>
+                <span>→</span>
+                <select id="inputMoedaPara">
+                    <option value="BRL">BRL</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </div>
+        </div>
+        <button onclick="adicionarItem()" type="button" class="btn btn-primary">Adicionar</button>
+        <ul id="listaItens">
+        </ul>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
