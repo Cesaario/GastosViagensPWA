@@ -81,7 +81,7 @@ function atualizarLista() {
 
         const valorConvertido = valor * taxaConversao * quantidade;
 
-        totalMoedaOrigem += Number(valor);
+        totalMoedaOrigem += Number(valor) * Number(quantidade);
         totalMoedaDestino += Number(valorConvertido);
 
         const valorFormatado = parseFloat(valor).toFixed(2);
@@ -99,8 +99,6 @@ function atualizarLista() {
         li.appendChild(div);
 
         ul.appendChild(li);
-
-        console.log(totalMoedaOrigem);
     })
 
     Promise.allSettled(aaaa).then(() => {  
