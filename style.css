@@ -47,6 +47,7 @@ li {
 }
 
 li .botoes {
+    margin-left: 8px;
     display: flex;
     gap: 8px;
 }

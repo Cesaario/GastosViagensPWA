@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0066ff" />
 </head>
 
 <body>
@@ -21,12 +22,12 @@
             <div>
                 <select id="inputMoedaDe">
                     <option value="BRL">BRL</option>
-                    <option value="USD">USD</option>
+                    <option value="USD" selected>USD</option>
                     <option value="EUR">EUR</option>
                 </select>
                 <span>→</span>
                 <select id="inputMoedaPara">
-                    <option value="BRL">BRL</option>
+                    <option value="BRL" selected>BRL</option>
                     <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
                 </select>
@@ -35,6 +36,14 @@
         <button onclick="adicionarItem()" type="button" class="btn btn-primary">Adicionar</button>
         <ul id="listaItens">
         </ul>
+        <div>
+            <span>Total (moeda origem):</span>
+            <span id="valorMoedaOrigem"></span>
+        </div>
+        <div>
+            <span>Total (moeda destino):</span>
+            <span id="valorMoedaDestino"></span>
+        </div>
     </div>
     <script src="./script.js"></script>
 </body>

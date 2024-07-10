@@ -17,7 +17,7 @@ function adicionarItem() {
     const itensAtuais = JSON.parse(localStorage.getItem(KEY_ITENS) || "[]");
 
     const indexItemJaExistente = itensAtuais.findIndex(item => item.descricao === descricao);
-    console.log(indexItemJaExistente);
+
     if (indexItemJaExistente !== -1) {
         itensAtuais[indexItemJaExistente] = item;
     } else {
@@ -69,14 +69,20 @@ function atualizarLista() {
     const ul = document.getElementById("listaItens");
     ul.innerHTML = "";
 
-    itens.forEach(async (item, index) => {
+    let totalMoedaOrigem = 0;
+    let totalMoedaDestino = 0;
+
+    const aaaa = itens.map(async (item, index) => {
         const { descricao, quantidade, valor, moedaDe, moedaPara } = item;
 
         const requisicaoConversao = await fetch(`https://api.exchangerate-api.com/v4/latest/${moedaDe}`);
         const dadosConversao = await requisicaoConversao.json();
         const taxaConversao = dadosConversao.rates[moedaPara];
 
-        const valorConvertido = valor * taxaConversao;
+        const valorConvertido = valor * taxaConversao * quantidade;
+
+        totalMoedaOrigem += Number(valor);
+        totalMoedaDestino += Number(valorConvertido);
 
         const valorFormatado = parseFloat(valor).toFixed(2);
         const valorConvertidoFormatado = parseFloat(valorConvertido).toFixed(2);
@@ -93,6 +99,13 @@ function atualizarLista() {
         li.appendChild(div);
 
         ul.appendChild(li);
+
+        console.log(totalMoedaOrigem);
+    })
+
+    Promise.allSettled(aaaa).then(() => {  
+        document.getElementById("valorMoedaOrigem").innerHTML = parseFloat(totalMoedaOrigem).toFixed(2);
+        document.getElementById("valorMoedaDestino").innerHTML = parseFloat(totalMoedaDestino).toFixed(2);
     })
 }
 
